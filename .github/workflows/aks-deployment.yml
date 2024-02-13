@@ -44,6 +44,6 @@ jobs:
  
     - name: Deploy to AKS
       run: |
-        kubectl apply -f aks-deployment.yml --validate=false
-        kubectl apply -f aks-svc.yml --validate=false
+        kubectl apply -f aks-deploy.yml
+        kubectl apply -f aks-svc.yml
       
