@@ -35,13 +35,15 @@ jobs:
           kubectl apply -f aks-svc.yml
 
     - name: Deploy to AKS
+      run: |
+          manifests="aks-deploy.yml,aks-svc.yml"
       uses: azure/aks-deploy@v3
       with:
         azure-region: centralindia
         resource-group: rg-aks-deployment-centralindia-01
         cluster-name: aks-deployment-centralindia-01
         kubectl-version: 'v1.26.0'
-        manifests: 'aks-deploy.yml,aks-svc.yml'
+        manifests: ${{ manifests }}
      
     #- name: Deploy to AKS
       #run: |
