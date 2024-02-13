@@ -20,8 +20,9 @@ jobs:
  
     - name: Build and Push Docker Image
       run: |
-        docker build -t ${{ secrets.REGISTRY_SERVER }}/aks-deployment:latest .
-        docker push ${{ secrets.REGISTRY_SERVER }}/aks-deployment:latest
+        docker build -t ${{ secrets.REGISTRY_SERVER }}/aks-deployment:v2 .
+        docker tag aks-deployment:v2 ${{ secrets.REGISTRY_SERVER }}/aks-deployment:v2
+        docker push ${{ secrets.REGISTRY_SERVER }}/aks-deployment:v2
  
     - name: Configure kubectl
       run: az aks get-credentials --resource-group rg-aks-deployment-centralindia-01 --name aks-deployment-centralindia-01
