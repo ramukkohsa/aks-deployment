@@ -36,7 +36,7 @@ jobs:
 
     - name: Deploy to AKS
       run: |
-          manifests="aks-deploy.yml,aks-svc.yml"
+          manifests="../../aks-deploy.yml,../../aks-svc.yml"
     - uses: azure/aks-deploy@v3
       with:
         azure-region: centralindia
