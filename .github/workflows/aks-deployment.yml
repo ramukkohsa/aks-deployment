@@ -28,7 +28,7 @@ jobs:
       with:
         azcliversion: latest
         inlineScript: |
-          az account show
+          az login
  
     - name: Configure kubectl
       run: az aks get-credentials --resource-group rg-aks-deployment-centralindia-01 --name aks-deployment-centralindia-01
