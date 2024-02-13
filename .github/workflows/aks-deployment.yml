@@ -33,6 +33,15 @@ jobs:
           az aks get-credentials --resource-group rg-aks-deployment-centralindia-01 --name aks-deployment-centralindia-01
           kubectl apply -f aks-deploy.yml
           kubectl apply -f aks-svc.yml
+
+    - name: Deploy to AKS
+      uses: azure/aks-deploy@v3
+      with:
+        azure-region: centralindia
+        resource-group: rg-aks-deployment-centralindia-01
+        cluster-name: aks-deployment-centralindia-01
+        kubectl-version: 'v1.26.0'
+        manifests: 'aks-deploy.yml,aks-svc.yml'
      
     #- name: Deploy to AKS
       #run: |
