@@ -1,6 +1,7 @@
 name: Deploy to AKS
  
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -20,12 +21,14 @@ jobs:
  
     - name: Build and Push Docker Image
       run: |
-        docker build -t ${{ secrets.REGISTRY_SERVER }}/your-image-name:latest .
-        docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }} ${{ secrets.REGISTRY_SERVER }}
-        docker push ${{ secrets.REGISTRY_SERVER }}/your-image-name:latest
+        docker build -t ${{ secrets.REGISTRY_SERVER }}/aks-deployment:latest .
+        docker push ${{ secrets.REGISTRY_SERVER }}/aks-deployment:latest
  
     - name: Configure kubectl
-      run: az aks get-credentials --resource-group <your-aks-rg> --name <your-aks-cluster-name>
+      run: az aks get-credentials --resource-group rg-aks-deployment-centralindia-01 --name aks-deployment-centralindia-01
  
     - name: Deploy to AKS
-      run: kubectl apply -f k8s/deployment.yaml
+      run: |
+        kubectl apply -f aks-deployment.yml
+        kubectl apply -f aks-svc.yml
+      
