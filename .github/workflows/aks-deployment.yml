@@ -32,7 +32,7 @@ jobs:
           az account set --subscription 4ed68a4b-d54d-444a-bddb-fdfec0f1b130
           az aks get-credentials --resource-group rg-aks-deployment-centralindia-01 --name aks-deployment-centralindia-01
  
-    - #name: Configure kubectl
+     #- name: Configure kubectl
       #run: |
         #sudo az cloud set -n azurecloud
         #sudo chmod -R 755 /home/runner/.azure
