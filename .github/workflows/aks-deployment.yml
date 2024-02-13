@@ -31,7 +31,9 @@ jobs:
           az login
  
     - name: Configure kubectl
-      run: az aks get-credentials --resource-group rg-aks-deployment-centralindia-01 --name aks-deployment-centralindia-01
+      run: |
+         az account set --subscription 4ed68a4b-d54d-444a-bddb-fdfec0f1b130
+         az aks get-credentials --resource-group rg-aks-deployment-centralindia-01 --name aks-deployment-centralindia-01
  
     - name: Deploy to AKS
       run: |
