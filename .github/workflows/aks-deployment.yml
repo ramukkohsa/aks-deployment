@@ -40,7 +40,7 @@ jobs:
         azure-region: centralindia
         resource-group: rg-aks-deployment-centralindia-01
         cluster-name: aks-deployment-centralindia-01
-        kubectl-version: 'v1.27.7'
+        kubectl-version: v1.26.0
         deploymentFiles: aks-deploy.yml
        
      
