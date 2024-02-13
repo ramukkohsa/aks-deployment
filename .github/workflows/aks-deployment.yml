@@ -23,10 +23,12 @@ jobs:
         docker tag aks-deployment:latest acraksdeployment.azurecr.io/aks-deployment:latest
         docker push acraksdeployment.azurecr.io/aks-deployment:latest
         
-    - name: Azure Login
-      uses: azure/login@v1
+    - name: Azure CLI script
+      uses: azure/CLI@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        azcliversion: latest
+        inlineScript: |
+          az account show
  
     - name: Configure kubectl
       run: az aks get-credentials --resource-group rg-aks-deployment-centralindia-01 --name aks-deployment-centralindia-01
