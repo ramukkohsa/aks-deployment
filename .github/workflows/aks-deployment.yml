@@ -36,6 +36,6 @@ jobs:
       run: |
         kubectl config view
         #kubectl get all -A
-        #kubectl apply -f aks-deploy.yml
+        kubectl apply -f aks-deploy.yml
         #kubectl apply -f aks-svc.yml
       
