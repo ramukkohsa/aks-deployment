@@ -22,7 +22,7 @@ jobs:
       run: |
         docker build -t aks-deployment:latest .
         docker tag aks-deployment:latest acraksdeployment.azurecr.io/aks-deployment:latest
-        docker push acraksdeployment.azurecr.io/aks-deployment:v1
+        docker push acraksdeployment.azurecr.io/aks-deployment:latest
  
     - name: Configure kubectl
       run: az aks get-credentials --resource-group rg-aks-deployment-centralindia-01 --name aks-deployment-centralindia-01
