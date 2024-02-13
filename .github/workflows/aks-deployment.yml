@@ -14,10 +14,9 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
  
-    #- name: Login to Azure
-     # run: az login --username bogavsai111@outlook.com --password Saikiranmai@2626
+    - name: Login to Azure
+      run: az acr login --name acraksdeployment.azurecr.io --username acraksdeployment --password /4DYEXGNG0NqL3fIZTIZeuiYb4CfZ5Qf20sOF8L5df+ACRDS3zES
       
- 
     - name: Build and Push Docker Image
       run: |
         docker build -t aks-deployment:latest .
