@@ -44,6 +44,7 @@ jobs:
  
     - name: Deploy to AKS
       run: |
-        kubectl apply -f aks-deploy.yml
-        kubectl apply -f aks-svc.yml
+        kubectl get all -A
+        #kubectl apply -f aks-deploy.yml
+        #kubectl apply -f aks-svc.yml
       
