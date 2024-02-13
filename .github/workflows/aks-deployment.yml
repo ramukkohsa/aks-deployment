@@ -15,9 +15,8 @@ jobs:
       uses: actions/checkout@v2
  
     - name: Login to Azure
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+      run: az login --subscription 4ed68a4b-d54d-444a-bddb-fdfec0f1b130 --username bogavsai111@outlook.com --password Saikiranmai@2626
+      
  
     - name: Build and Push Docker Image
       run: |
