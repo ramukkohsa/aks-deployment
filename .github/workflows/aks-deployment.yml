@@ -41,7 +41,7 @@ jobs:
         resource-group: rg-aks-deployment-centralindia-01
         cluster-name: aks-deployment-centralindia-01
         kubectl-version: v1.26.0
-        deploymentFiles: aks-deploy.yml
+        manifests: aks-deploy.yml
        
      
     #- name: Deploy to AKS
