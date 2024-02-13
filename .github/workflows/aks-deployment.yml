@@ -25,6 +25,11 @@ jobs:
  
     - name: Configure kubectl
       run: az aks get-credentials --resource-group rg-aks-deployment-centralindia-01 --name aks-deployment-centralindia-01
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
  
     - name: Deploy to AKS
       run: |
