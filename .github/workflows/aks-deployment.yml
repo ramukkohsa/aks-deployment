@@ -36,14 +36,14 @@ jobs:
 
     - name: Deploy to AKS
       run: |
-          manifests="../../aks-deploy.yml,../../aks-svc.yml"
+         manifests="aks-deploy.yml,aks-svc.yml"
     - uses: azure/aks-deploy@v3
       with:
         azure-region: centralindia
         resource-group: rg-aks-deployment-centralindia-01
         cluster-name: aks-deployment-centralindia-01
         kubectl-version: 'v1.27.7'
-        eploymentFiles: ${{ manifests }}
+        deploymentFiles: ${{ manifests }}
      
     #- name: Deploy to AKS
       #run: |
