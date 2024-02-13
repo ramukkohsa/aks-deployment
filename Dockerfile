@@ -1,10 +1,16 @@
-FROM httpd:latest
+# Use the Red Hat Universal Base Image (UBI) as the base image
+FROM registry.access.redhat.com/ubi8/ubi:latest
 
-RUN yum install httpd -y
+# Update the system and install necessary packages
+RUN yum update -y && \
+    yum install -y httpd && \
+    yum clean all
 
-RUN systemctl enable httpd
+# Copy your website files into the container
+COPY index.html /var/www/html/index.html
 
-RUN systemctl start httpd
+# Expose port 80
+EXPOSE 80
 
-COPY index.html /var/www/html/
-
+# Start Apache in the foreground
+CMD ["httpd", "-D", "FOREGROUND"]                                
