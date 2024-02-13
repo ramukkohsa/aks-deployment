@@ -28,15 +28,15 @@ jobs:
       with:
         azcliversion: latest
         inlineScript: |
-          az login --username bogavsai111@outlook.com --password Saikiranmai@2626
+          az login
           az account set --subscription 4ed68a4b-d54d-444a-bddb-fdfec0f1b130
           az aks get-credentials --resource-group rg-aks-deployment-centralindia-01 --name aks-deployment-centralindia-01
           kubectl apply -f aks-deploy.yml
           kubectl apply -f aks-svc.yml
      
-    - name: Deploy to AKS
-      run: |
-        kubectl config current-context
+    #- name: Deploy to AKS
+      #run: |
+        #kubectl config current-context
         #kubectl config view
         #kubectl get all -A
         #kubectl apply -f aks-deploy.yml
