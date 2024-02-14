@@ -12,4 +12,4 @@ create manifest files for the application
 
 deploy the application using manifests into the cluster (AKS)
 
-monitor it using prometheus and Grafana
+deploy prometheus and Grafana using the shell script and expose/edit the service type with LoadBalancer
