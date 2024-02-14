@@ -35,7 +35,7 @@ jobs:
           kubectl apply -f aks-svc.yml
 
     - name: Deploy to AKS
-      uses: azure/aks-deploy@v2
+      uses: azure/aks-deploy@v1
       with:
         azure-region: centralindia
         resource-group: rg-aks-deployment-centralindia-01
