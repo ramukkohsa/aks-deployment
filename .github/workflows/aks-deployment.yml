@@ -31,6 +31,7 @@ jobs:
           az login
           az account set --subscription 4ed68a4b-d54d-444a-bddb-fdfec0f1b130
           az aks get-credentials --resource-group rg-aks-deployment-centralindia-01 --name aks-deployment-centralindia-01
+          az aks install-cli
           kubectl apply -f aks-deploy.yml
           kubectl apply -f aks-svc.yml
 
