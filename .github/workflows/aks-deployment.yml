@@ -32,6 +32,6 @@ jobs:
           az account set --subscription ${{ vars.AKS_SUBSCRIPTION_ID }}
           az aks get-credentials --resource-group rg-aks-deployment-centralindia-01 --name aks-deployment-centralindia-01
           az aks install-cli
-          echo "kubectl version --client"
+          kubectl version --client
           kubectl apply -f aks-deploy.yml
           kubectl apply -f aks-svc.yml
