@@ -1,4 +1,4 @@
-name: Deploy to AKS
+name: Deploy Sample Application to AKS
  
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
  
-    - name: Login to Azure
+    - name: Login to ACR
       run: az acr login --name acraksdeployment.azurecr.io --username acraksdeployment --password /4DYEXGNG0NqL3fIZTIZeuiYb4CfZ5Qf20sOF8L5df+ACRDS3zES
       
     - name: Build and Push Docker Image
@@ -23,7 +23,7 @@ jobs:
         docker tag aks-deployment:latest acraksdeployment.azurecr.io/aks-deployment:latest
         docker push acraksdeployment.azurecr.io/aks-deployment:latest
         
-    - name: Azure CLI script
+    - name: Login and Deploy to AKS
       uses: azure/CLI@v1
       with:
         azcliversion: latest
@@ -32,24 +32,6 @@ jobs:
           az account set --subscription 4ed68a4b-d54d-444a-bddb-fdfec0f1b130
           az aks get-credentials --resource-group rg-aks-deployment-centralindia-01 --name aks-deployment-centralindia-01
           az aks install-cli
+          echo "kubectl version --client"
           kubectl apply -f aks-deploy.yml
           kubectl apply -f aks-svc.yml
-
-    #- name: Deploy to AKS
-      #uses: azure/aks-deploy@v3
-      #with:
-        #azure-region: centralindia
-        #resource-group: rg-aks-deployment-centralindia-01
-       # cluster-name: aks-deployment-centralindia-01
-       # kubectl-version: v1.26.0
-       # manifests: aks-deploy.yml
-       
-     
-    - name: Deploy to AKS
-      run: |
-        kubectl config current-context
-        kubectl config view
-        kubectl get all -A
-        kubectl apply -f aks-deploy.yml
-        kubectl apply -f aks-svc.yml
-      
