@@ -1,4 +1,4 @@
-crname: Deploy Sample Application to AKS
+name: Deploy Sample Application to AKS
  
 on:
   workflow_dispatch:
