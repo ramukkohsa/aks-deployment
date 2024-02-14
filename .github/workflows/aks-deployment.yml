@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v2
  
     - name: Login to ACR
-      run: az acr login --name acraksdeployment.azurecr.io --username acraksdeployment --password /4DYEXGNG0NqL3fIZTIZeuiYb4CfZ5Qf20sOF8L5df+ACRDS3zES
+      run: az acr login --name ${{ ACR_REPO }} --username ${{ ACR_REPO_USERNAME }} --password ${{ ACR_REPO_PASSWORD }}
       
     - name: Build and Push Docker Image
       run: |
@@ -29,7 +29,7 @@ jobs:
         azcliversion: latest
         inlineScript: |
           az login
-          az account set --subscription 4ed68a4b-d54d-444a-bddb-fdfec0f1b130
+          az account set --subscription ${{ AKS_SUBSCRIPTION_ID }}
           az aks get-credentials --resource-group rg-aks-deployment-centralindia-01 --name aks-deployment-centralindia-01
           az aks install-cli
           echo "kubectl version --client"
