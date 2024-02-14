@@ -15,4 +15,5 @@ Deploy the application using manifests into the cluster (AKS)
 Deploy prometheus and Grafana using the shell script and expose/edit the service type with LoadBalancer
 
 
-![image](https://github.com/ramukkohsa/aks-deployment/assets/91192168/b5b5bd35-e083-4b89-9217-0dd0e016b776)
+![image](https://github.com/ramukkohsa/aks-deployment/assets/91192168/737062a7-77e0-4e79-babe-903a97f21543)
+
