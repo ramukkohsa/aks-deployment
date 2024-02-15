@@ -41,6 +41,5 @@ jobs:
           az aks get-credentials --resource-group rg-aks-deployment-centralindia-01 --name aks-deployment-centralindia-01
           az aks install-cli
           kubectl version --client
-          sed -i 's/latest/$TAG/g' aks-deploy.yml
           kubectl apply -f aks-deploy.yml
           kubectl apply -f aks-svc.yml
