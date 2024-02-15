@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: httpd-container
-        image: acraksdeployment.azurecr.io/aks-deployment:v20240215_055548
+        image: acraksdeployment.azurecr.io/aks-deployment:latest
         ports:
         - containerPort: 80
