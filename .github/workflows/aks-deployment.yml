@@ -25,9 +25,9 @@ jobs:
       env:
         TAG: ${{ steps.set-tag.outputs.TAG }}
       run: |
-        docker build -t aks-deployment:${{TAG}} .
-        docker tag aks-deployment:${{TAG}} acraksdeployment.azurecr.io/aks-deployment:${{TAG}}
-        docker push acraksdeployment.azurecr.io/aks-deployment:${{TAG}}
+        docker build -t aks-deployment:${{ TAG }} .
+        docker tag aks-deployment:${{ TAG }} acraksdeployment.azurecr.io/aks-deployment:${{ TAG }}
+        docker push acraksdeployment.azurecr.io/aks-deployment:${{ TAG }}
         
     - name: Login and Deploy to AKS
       uses: azure/CLI@v1
