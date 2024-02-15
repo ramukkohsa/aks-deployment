@@ -17,16 +17,16 @@ jobs:
     - name: Login to ACR
       run: az acr login --name ${{ vars.ACR_REPO }} --username ${{ vars.ACR_REPO_USERNAME }} --password ${{ vars.ACR_REPO_PASSWORD }}
 
-    - name: Set image tag dynamically
-      id: set-tag
-      run: echo "::set-output name=TAG::v$(date +'%Y%m%d_%H%M%S')"
+    # - name: Set image tag dynamically
+    #   id: set-tag
+    #   run: echo "::set-output name=TAG::v$(date +'%Y%m%d_%H%M%S')"
 
     - name: Build and Push Docker Image
-      env:
-        TAG: ${{ steps.set-tag.outputs.TAG }}
+      # env:
+      #   TAG: ${{ steps.set-tag.outputs.TAG }}
         
       run: |
-        echo $TAG
+        #echo $TAG
         docker build -t aks-deployment:latest .
         docker tag aks-deployment:latest acraksdeployment.azurecr.io/aks-deployment:latest
         docker push acraksdeployment.azurecr.io/aks-deployment:latest
