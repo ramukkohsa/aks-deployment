@@ -24,7 +24,9 @@ jobs:
     - name: Build and Push Docker Image
       env:
         TAG: ${{ steps.set-tag.outputs.TAG }}
+        
       run: |
+        echo $TAG
         docker build -t aks-deployment:$TAG .
         docker tag aks-deployment:$TAG acraksdeployment.azurecr.io/aks-deployment:$TAG
         docker push acraksdeployment.azurecr.io/aks-deployment:$TAG
