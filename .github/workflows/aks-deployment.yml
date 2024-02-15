@@ -21,7 +21,7 @@ jobs:
     #   id: set-tag
     #   run: echo "::set-output name=TAG::v$(date +'%Y%m%d_%H%M%S')"
 
-    - name: Build and Push Docker Image
+    - name: Build and Push Docker Images
       # env:
       #   TAG: ${{ steps.set-tag.outputs.TAG }}
         
