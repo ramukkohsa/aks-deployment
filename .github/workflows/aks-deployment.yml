@@ -16,12 +16,18 @@ jobs:
  
     - name: Login to ACR
       run: az acr login --name ${{ vars.ACR_REPO }} --username ${{ vars.ACR_REPO_USERNAME }} --password ${{ vars.ACR_REPO_PASSWORD }}
-      
+
+    - name: Set image tag dynamically
+      id: set-tag
+      run: echo "::set-output name=TAG::v$(date +'%Y%m%d_%H%M%S')"
+
     - name: Build and Push Docker Image
+      env:
+        TAG: ${{ steps.set-tag.outputs.TAG }}
       run: |
-        docker build -t aks-deployment:${{ github.run_number }} .
-        docker tag aks-deployment:latest acraksdeployment.azurecr.io/aks-deployment:${{ github.run_number }}
-        docker push acraksdeployment.azurecr.io/aks-deployment:${{ github.run_number }}
+        docker build -t aks-deployment:$TAG .
+        docker tag aks-deployment:$TAG acraksdeployment.azurecr.io/aks-deployment:$TAG
+        docker push acraksdeployment.azurecr.io/aks-deployment:$TAG
         
     - name: Login and Deploy to AKS
       uses: azure/CLI@v1
