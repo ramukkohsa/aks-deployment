@@ -27,9 +27,9 @@ jobs:
         
       run: |
         echo $TAG
-        docker build -t aks-deployment:$TAG .
-        docker tag aks-deployment:$TAG acraksdeployment.azurecr.io/aks-deployment:$TAG
-        docker push acraksdeployment.azurecr.io/aks-deployment:$TAG
+        docker build -t aks-deployment:latest .
+        docker tag aks-deployment:latest acraksdeployment.azurecr.io/aks-deployment:latest
+        docker push acraksdeployment.azurecr.io/aks-deployment:latest
         
     - name: Login and Deploy to AKS
       uses: azure/CLI@v1
