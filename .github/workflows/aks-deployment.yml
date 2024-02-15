@@ -19,9 +19,9 @@ jobs:
       
     - name: Build and Push Docker Image
       run: |
-        docker build -t aks-deployment:latest .
-        docker tag aks-deployment:latest acraksdeployment.azurecr.io/aks-deployment:latest
-        docker push acraksdeployment.azurecr.io/aks-deployment:latest
+        docker build -t aks-deployment:$(IMAGE_TAG) .
+        docker tag aks-deployment:latest acraksdeployment.azurecr.io/aks-deployment:$(IMAGE_TAG)
+        docker push acraksdeployment.azurecr.io/aks-deployment:$(IMAGE_TAG)
         
     - name: Login and Deploy to AKS
       uses: azure/CLI@v1
